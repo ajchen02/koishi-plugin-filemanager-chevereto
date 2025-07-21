@@ -16,7 +16,7 @@ export const Config: Schema<Config> = Schema.object({
   killTime: Schema.number().description('可选的过期时间，单位为分钟').default(5)
 });
 
-export const inject = ['filemanager'];
+export const inject = ['fileManager'];
 
 export function apply(ctx: Context, config: Config)
 {
