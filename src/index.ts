@@ -16,22 +16,22 @@ export const Config: Schema<Config> = Schema.object({
   killTime: Schema.number().description('可选的过期时间，单位为分钟').default(5)
 });
 
-export const inject = ['fileManager'];
+export const inject = ['filemanager'];
 
 export function apply(ctx: Context, config: Config)
 {
   // 进行图床注册
-  ctx.fileManager.img.reg('chevereto', config.endpoint, async (file: Buffer, fileName: string) =>
+  ctx.filemanager.img.reg('chevereto', config.endpoint, async (file: Buffer, fileName: string) =>
   {
     const url = config.endpoint;
-    const formData = new ctx.fileManager.FormData();
+    const formData = new ctx.filemanager.FormData();
     const killTime = config.killTime;
 
     formData.append('source', file, `${fileName}.jpeg`);
     formData.append('expiration', `PT${killTime}M`);
     formData.append('key', config.token);
 
-    const data = await ctx.fileManager.axios.post(`${url}/api/1/upload`, formData, {
+    const data = await ctx.filemanager.axios.post(`${url}/api/1/upload`, formData, {
       headers: {
         ...formData.getHeaders(),
         'X-API-Key': config.token,
