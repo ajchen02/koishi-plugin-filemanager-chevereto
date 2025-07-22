@@ -2,6 +2,7 @@ import { Context, Schema } from 'koishi';
 import { } from 'koishi-plugin-filemanager';
 
 export const name = 'filemanager-chevereto';
+export const reusable = true
 
 export interface Config
 {
@@ -47,4 +48,8 @@ export function apply(ctx: Context, config: Config)
 
     return data.data.image.url;
   });
+
+  ctx.on('dispose', () => {
+    ctx.filemanager.img.unReg('chevereto')
+  })
 }
