@@ -23,7 +23,9 @@
   },
   "koishi": {
     "service": {
-      "required": ["filemanager"]
+      "required": [
+        "filemanager"
+      ]
     }
   }
 }
