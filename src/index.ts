@@ -2,6 +2,7 @@ import { Context, Schema } from 'koishi';
 import { } from 'koishi-plugin-filemanager';
 
 export const name = 'filemanager-chevereto';
+export const reusable = true
 
 export interface Config
 {
@@ -11,7 +12,7 @@ export interface Config
 }
 
 export const Config: Schema<Config> = Schema.object({
-  endpoint: Schema.string().description('图床服务的API端点地址').default('https://freeimghost.net/api/1/upload'),
+  endpoint: Schema.string().description('图床服务的API端点地址').default('https://freeimghost.net'),
   token: Schema.string().description('图床服务的API Key令牌').required(),
   killTime: Schema.number().description('可选的过期时间，单位为分钟').default(5)
 });
