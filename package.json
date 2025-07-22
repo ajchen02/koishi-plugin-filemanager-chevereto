@@ -20,5 +20,10 @@
   },
   "devDependencies": {
     "koishi-plugin-filemanager": "^0.0.1"
+  },
+  "koishi": {
+    "service": {
+      "required": ["filemanager"]
+    }
   }
 }
