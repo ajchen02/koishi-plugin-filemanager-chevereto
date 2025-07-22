@@ -48,4 +48,8 @@ export function apply(ctx: Context, config: Config)
 
     return data.data.image.url;
   });
+
+  ctx.on('dispose', () => {
+    ctx.filemanager.img.unReg('chevereto')
+  })
 }
